@@ -1,0 +1,33 @@
+---
+title: "Ordinal Confounder Example"
+author: "Chase Mathis"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Set up our causal model.
+```{r}
+n <- 1e2
+U <- rnorm(n)
+T <- 4 * U + rnorm(n)
+Y <- 8 * T -5 * U + rnorm(n)
+O <- as.numeric(cut(U, 5))
+
+dat <- data.frame(cbind(U, T, Y, O))
+```
+
+Look at our Naive estimate
+```{r}
+lm(Y ~ T + O, dat)
+```
+Look at our bayesian bootstrapping method
+
+```{r, warning=FALSE, message=FALSE}
+library(ordinalconfounder)
+print(estimate(dat))
+```
+
