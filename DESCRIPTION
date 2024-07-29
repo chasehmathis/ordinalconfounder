@@ -11,4 +11,6 @@ LazyData: true
 SystemRequirements: Stan
 Depends:
     R (>= 3.5.0),
-    cmdstanr
+    cmdstanr,
+    dplyr
+RoxygenNote: 7.3.2
