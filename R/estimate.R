@@ -16,6 +16,7 @@ estimate <- function(dat) {
   center <- rep(0, 4)
   stan_data_T <- list(N = N, C = C,
                       y = O, X = T, center = center)
+  file_path <- system.file("extdata", "ordinal.stan", package = "ordinalconfounder")
   compiled_model <- cmdstanr::cmdstan_model("../tools/ordinal.stan")
 
   fitT <- compiled_model$sample(data = stan_data_T,
