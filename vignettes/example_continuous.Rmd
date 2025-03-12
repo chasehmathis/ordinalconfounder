@@ -1,5 +1,5 @@
 ---
-title: "Ordinal Confounder Example"
+title: "Ordinal Confounder for Continuous Setting Example"
 author: "Chase Mathis"
 date: "`r Sys.Date()`"
 output: html_document
@@ -15,7 +15,7 @@ n <- 1e2
 U <- rnorm(n)
 T <- 4 * U + rnorm(n)
 Y <- 8 * T -5 * U + rnorm(n)
-O <- as.numeric(cut(U, 5))
+O <- as.numeric(cut(U, 5)) # other ways to generate ordinal variables
 
 dat <- data.frame(cbind(U, T, Y, O))
 ```

@@ -1,0 +1,36 @@
+---
+title: "Ordinal Confounder for Binary Setting Example"
+author: "Chase Mathis"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Set up our causal model.
+```{r}
+n <- 1e2
+U <- rnorm(n)
+O <- as.numeric(cut(U, 5)) # other ways to generate ordinal variables
+
+Tstar <- 0.75 * U + rlogis(n)
+T <- 1*(Tstar > 0)
+Ystar <- -0.75 * T + U + rlogis(n)
+Y <- 1*(Ystar > 0)
+
+dat <- data.frame(cbind(U, T, Y, Tstar, Ystar, O))
+```
+
+Look at our Naive estimate
+```{r}
+glm(Y ~ T + O, dat, family = binomial())
+```
+Look at our bayesian bootstrapping method
+
+```{r, warning=FALSE, message=FALSE}
+library(ordinalconfounder)
+print(estimate(dat, "binomial"))
+```
+

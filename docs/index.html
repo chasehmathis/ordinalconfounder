@@ -50,7 +50,10 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="articles/example.html">Ordinal Confounder Example</a>
+      <a href="articles/example_continuous.html">Ordinal Confounder for Continuous Setting Example</a>
+    </li>
+    <li>
+      <a href="articles/example_logistic.html">Ordinal Confounder for Binary Setting Example</a>
     </li>
   </ul>
 </li>
@@ -70,7 +73,7 @@
 <div class="section level1">
 <div class="page-header"><h1 id="ordinalconfounder">ordinalconfounder<a class="anchor" aria-label="anchor" href="#ordinalconfounder"></a>
 </h1></div>
-<p>With normal multivariate data <span class="math inline">(<em>U</em>,<em>T</em>,<em>Y</em>)</span> where <span class="math inline"><em>U</em></span> is hidden, we sometimes have ordinal, binned data that is a proxy for <span class="math inline"><em>U</em></span>.</p>
+<p>With normal multivariate data <span class="math inline">(<em>U</em>, <em>T</em>, <em>Y</em>)</span> where <span class="math inline"><em>U</em></span> is hidden, we sometimes have ordinal, binned data that is a proxy for <span class="math inline"><em>U</em></span>.</p>
 <p>Proximal Causal Learning requires <em>two</em> proxies. Here, we consider using only one proxy.</p>
 <pre><code><span><span class="op">{</span><span class="va">r</span><span class="op">}</span></span>
 <span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fl">1e2</span></span>

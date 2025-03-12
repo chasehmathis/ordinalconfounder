@@ -4,8 +4,14 @@
 \alias{estimate}
 \title{estimate}
 \usage{
-estimate(dat)
+estimate(dat, family, model = "clm")
+}
+\arguments{
+\item{family}{family should be one of binomial, continuous}
+
+\item{model}{model should be one of sampler or clm (default is clm)}
 }
 \description{
-This is a description of my function.
+Main estimation funciton
+ @param dat data set
 }
