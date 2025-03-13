@@ -4,12 +4,14 @@
 \alias{estimate}
 \title{estimate}
 \usage{
-estimate(dat, family, model = "clm")
+estimate(dat, family, model = "clm", return_what = TRUE)
 }
 \arguments{
 \item{family}{family should be one of binomial, continuous}
 
 \item{model}{model should be one of sampler or clm (default is clm)}
+
+\item{return_what}{return the fitted proximal control variable or the full model}
 }
 \description{
 Main estimation funciton

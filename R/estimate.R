@@ -1,9 +1,10 @@
 #' estimate
 #'
 #' Main estimation funciton
-##'  @param dat data set
-##' @param family family should be one of binomial, continuous
-##' @param model model should be one of sampler or clm (default is clm)
+#'  @param dat data set
+#' @param family family should be one of binomial, continuous
+#' @param model model should be one of sampler or clm (default is clm)
+#' @param return_what return the fitted proximal control variable or the full model
 #' @importFrom stats coef lm pnorm qnorm runif
 #' @importFrom cmdstanr cmdstan_model
 #' @importFrom dplyr pull
@@ -40,7 +41,8 @@ estimate <- function(dat, family, model = "clm", return_what = TRUE) {
   
   if(family == "binomial"){
     mod1 <- stats::lm(W ~ Z + T + O + Y, dat)
-    what <- cbind(1,dat$Z, dat$T, dat$O, 1) %*% coef(mod1)
+    mm <- cbind(model.matrix(~Z + T+ O, dat), 1)
+    what <- mm %*% coef(mod1)
     if(return_what){
       return(list("what" = what))
     }
