@@ -6,6 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
+set.seed(1)
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -28,6 +29,6 @@ Look at our bayesian bootstrapping method
 
 ```{r, warning=FALSE, message=FALSE}
 library(ordinalconfounder)
-print(estimate(dat))
+print(estimate(dat, family = "continuous"))
 ```
 

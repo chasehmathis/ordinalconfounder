@@ -24,6 +24,6 @@ library(ordinalconfounder)
 # naive estimate
 lm(Y ~ T + O, dat)
 
-# bayesian boot
-estimate(dat)
+# bayesian boot estimator
+estimate(dat, family = "continuous")
 ```

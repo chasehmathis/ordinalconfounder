@@ -10,6 +10,12 @@
     <loc>/articles/example.html</loc>
   </url>
   <url>
+    <loc>/articles/example_continuous.html</loc>
+  </url>
+  <url>
+    <loc>/articles/example_logistic.html</loc>
+  </url>
+  <url>
     <loc>/articles/index.html</loc>
   </url>
   <url>
@@ -26,5 +32,11 @@
   </url>
   <url>
     <loc>/reference/index.html</loc>
+  </url>
+  <url>
+    <loc>/reference/model_output_clm.html</loc>
+  </url>
+  <url>
+    <loc>/reference/model_output_stan.html</loc>
   </url>
 </urlset>

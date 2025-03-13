@@ -23,6 +23,9 @@ estimate <- function(dat, family, model = "clm") {
     # warn logic here, won't work well unless have proxy
     Tstar = dat[["Tstar"]]
     Ystar = dat[["Ystar"]]
+  } else if (family == "continuous"){
+    Tstar = dat[["T"]]
+    Ystar = dat[["T"]]
   }
   if(model == "stan"){
     WZ <- model_output_stan(N, C, O, T, Y)
