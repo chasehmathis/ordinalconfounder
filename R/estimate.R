@@ -8,7 +8,7 @@
 #' @importFrom cmdstanr cmdstan_model
 #' @importFrom dplyr pull
 #' @export
-estimate <- function(dat, family, model = "clm") {
+estimate <- function(dat, family, model = "clm", return_what = TRUE) {
   if(missing(family)){
     stop("Must specify family to be logistic or continuous")
   }
@@ -37,19 +37,26 @@ estimate <- function(dat, family, model = "clm") {
   }
   dat["W"] <- WZ[["W"]]
   dat["Z"] <- WZ[["Z"]]
-
+  
   if(family == "binomial"){
     mod1 <- stats::lm(W ~ Z + T + O + Y, dat)
     what <- cbind(1,dat$Z, dat$T, dat$O, 1) %*% coef(mod1)
+    if(return_what){
+      return(list("what" = what))
+    }
     bTYhat <- stats::glm(Y ~ T + what, dat, family = binomial())
   }else if(family == "continuous"){
     what <- stats::lm(W ~ Z + T + O, dat)$fitted.values
+    if(return_what){
+      return(list("what" = what))
+    }
     bTYhat <- lm(Y ~ T + what, dat)
   }
 
 
 
-  return(list("bootstrapMod" = bTYhat))
+  return(list("bootstrapMod" = bTYhat,
+             "what" = what))
 
 
 }
