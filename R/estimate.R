@@ -41,6 +41,7 @@ estimate <- function(dat, family, model = "clm", return_what = TRUE) {
   
   if(family == "binomial"){
     mod1 <- stats::lm(W ~ Z + T + O + Y, dat)
+    # mm for more general instead of just cbinding all together
     mm <- cbind(model.matrix(~Z + T+ O, dat), 1)
     what <- mm %*% coef(mod1)
     if(return_what){
